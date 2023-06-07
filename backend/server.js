@@ -4,7 +4,15 @@ const path = require("path");
 const url = require("url");
 const cors = require("cors");
 
-const { readUser, register, login, sendMail, resetPassword, sendCodeVerification, forgetPassword } = require('./modul/user');
+const {
+  readUser,
+  register,
+  login,
+  sendMail,
+  resetPassword,
+  sendCodeVerification,
+  forgetPassword,
+} = require("./modul/user");
 // const multer = require('multer');
 // var storage = multer.diskStorage({
 //   destination: function (req, file, cb) {
