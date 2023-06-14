@@ -35,6 +35,10 @@
     <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/style/custom.css" rel="stylesheet" type="text/css" />
+          <script>
+        localStorage.getItem("user") ?(window.location.href = "/dashboard.html"):null;
+        // document.getElementById("username").innerHTML = localStorage.getItem("user").username;
+    </script>
     <!--end::Global Stylesheets Bundle-->
   </head>
 
@@ -159,7 +163,8 @@ $.ajax({
         swal.showLoading();
     },
     success: function (result) {
-        console.log(result);
+          console.log(result.data);
+     localStorage.setItem("user", JSON.stringify(result.data));
         Swal.fire({
             icon: 'success',
             confirmButtonColor: '#0084C8',
