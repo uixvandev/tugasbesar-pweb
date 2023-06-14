@@ -145,7 +145,7 @@
             $(document).ready(function () {
                 $.ajax({
                     method: "GET",
-                    url: 'http://localhost:3000/api/form/'+idValue,
+                    url: 'http://localhost:3001/api/form/'+idValue,
                     success: function (result) {
                      $('#name').val(result.data[0].name);
                      $('#description').val(result.data[0].description);
@@ -164,7 +164,7 @@
         var description = $('#description').val();
             $.ajax({
                 method: "PUT",
-                url: 'http://localhost:3000/api/form',
+                url: 'http://localhost:3001/api/form',
                 data: {
                     id:idValue,
                     user_id:user?.id,
