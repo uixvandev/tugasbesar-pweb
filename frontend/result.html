@@ -32,7 +32,7 @@
     </head>
 
     <body id="kt_app_body" data-kt-app-layout="light-sidebar" data-kt-app-header-fixed="true" data-kt-app-toolbar-enabled="true" class="app-default">
-        <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+        <div class="d-flex flex-column flex-root app-root h-100" id="kt_app_root">
             <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
                 <div id="kt_app_header" class="app-header"  style="background-color:white;">
                     <div class="app-container container-fluid d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
@@ -77,51 +77,31 @@
                     <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                         <div class="d-flex flex-column flex-column-fluid">
                             <div id="kt_app_content" class="app-content flex-column-fluid pt-8 mt-20 mt-lg-0">
-                                <div id="kt_app_content_container" class="app-container container-fluid d-flex align-items-center flex-column justify-content-center">
+                                <div id="kt_app_content_container" class="app-container container-fluid h-100 d-flex align-items-center flex-column justify-content-center">
                                    
-                                    <div class="card card-custom w-100 w-lg-50 mt-0 mt-lg-15">
-                                        <form class="w-100" >
-                                        <div class="card-header justify-content-center d-flex flex-column align-items-start" style="min-height:50px;border-radius:24px 24px 0px 0px;background: #01a9a0;">
+                                   <div class="card shadow-sm text-center">
+                                    <div class="card-body">
+                                     <img src="/assets/img//v1.svg" class="mb-4">
+                                     <h1 class="mb-4">Form berhasil dibuat!</h1>
+                                     <div class="mb-6 d-flex align-items-center justify-content-center">
+                                      <span id="ket" class="fs-3" style="font-family: 'Inter';color:#01A9A0; font-weight: 500
+                                        ;"></span> &nbsp;&nbsp;
+                                      <img src="/assets/img/v2.svg" onclick="copyLink()" style="cursor: pointer;"/>
+                                     </div>
+                                     <div class="mb-7">
+                                         <a
+                                        href="/dashboard.html"
+                                        id="kt_sign_in_submit"
+                                        class="btn rounded-pill w-100"
+                                        style="background-color: #01a9a0"
+                                    >
+                                        <span class="indicator-label text-white fs-4">Kembali Ke Dashboard</span>
 
-                                            <div class="card-title text-white">
-                                                Buat Formulir
-                                            </div>
-                                        </div>
-
-                                        <div class="card-body justify-content-start d-flex flex-column align-items-center" style="min-height:150px;">
-                                            <div class="mb-8 w-100">
-                                            <label for="name" class="form-label fw-bold required">Judul Form</label>
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                placeholder="Masukkan judul"
-                                                name="name"
-                                                class="form-control"
-                                                required
-                                            />
-                                            </div>
-                                             <div class="mb-8 w-100">
-                                            <label for="description" class="form-label fw-bold required">Deskripsi</label>
-                                            <textarea
-                                                type="text"
-                                                rows="4"
-                                                id="description"
-                                                name="description"
-                                                class="form-control"
-                                                required
-                                            ></textarea>
-                                            </div>
-                                            
-                                        </div>
-                                           <div class="card-footer ps-0 text-end" style="background-color: #f5f8fa;">
-                                               <button type="submit" class="btn text-white lh-0 py-5" style="background-color: #01a9a0;">
-                                            <div class="pb-0 mb-0">Kirim</div>
-                                        </button>
-
-                                        </div>
-                                        </form>
-                                       
+                                    </a>
+                                     </div>
                                     </div>
+                                </div>
+
                                   
                                 </div>
                             </div>
@@ -144,70 +124,34 @@
         <script>
               var user = JSON.parse(localStorage.getItem("user"));
          document.getElementById("username").innerHTML = user?.username ?? "MyAccount";
-            $(document).ready(function () {
-    $("form").submit(function (event) {
-            event.preventDefault();
-         var name = $('#name').val();
-        var description = $('#description').val();
-            $.ajax({
-                method: "POST",
-                url: 'http://localhost:3000/api/form',
-                data: {
-                    user_id:user?.id,
-                    name:name,
-                    description:description
-                },
-                beforeSend: function () {
-                    Swal.fire({title: 'Silahkan tunggu'});
-                    swal.showLoading();
-                },
-                success: function (result) {
-                    Swal.fire({
-                        icon: 'success',
-                        confirmButtonColor: '#0084C8',
-                        confirmButtonText: 'Oke',
-                        title: result.message,
-                        showClass: {
-                            popup: 'animate__animated animate__fadeInDown'
-                        },
-                        hideClass: {
-                            popup: 'animate__animated animate__fadeOutUp'
-                        }
-                    });
-                    setTimeout(function () {
-                        window.location.href = '/result.html?id='+result.data.id
-                    }, 1000)
-                  
-                    // $('#e-book').val('');
-                    // console.log(result.message);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    var err = JSON.parse(jqXHR.responseText);
-                    Swal.fire({
-                        icon: 'error',
-                        title: err.message,
-                        confirmButtonColor: '#0084C8',
-                        confirmButtonText: 'Oke',
-                        showClass: {
-                            popup: 'animate__animated animate__fadeInDown'
-                        },
-                        hideClass: {
-                            popup: 'animate__animated animate__fadeOutUp'
-                        }
-                    });
-                }
-            }).done(function (data) {
-                console.log(data);
-            });
-
-            // Reset nilai formulir
-            // form.reset();
-            });
-});
+          const queryString = window.location.search;
+                    const urlParams = new URLSearchParams(queryString);
+                    const idValue = urlParams.get('id');
+            $('#ket').append('form.rt/'+idValue)
             function logout(){
                 localStorage.removeItem("user")
                 window.location.href='/login.html'
             }
+
+function copyLink() {
+    const baseUrl = window.location.origin;
+    const link = `${baseUrl}/colform.html?id=${idValue}`; // Mendapatkan URL/link halaman saat ini
+    navigator.clipboard.writeText(link); // Menyalin URL/link ke clipboard
+    console.log("Link copied successfully!");
+    Swal.fire({
+        icon: 'success',
+        confirmButtonColor: '#0084C8',
+        confirmButtonText: 'Oke',
+        title: "Link copied successfully!",
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+        }
+    }); // Menampilkan pesan pada console log
+}
+
                      
         </script>
         <script src="/assets/plugins/global/plugins.bundle.js"></script>

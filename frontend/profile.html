@@ -4,7 +4,7 @@
     lang="en">
     <!--begin::Head-->
     <head><base href="../../../"/>
-        <title>Add Respon</title>
+        <title>Profil</title>
         <meta charset="utf-8"/>
         <meta name="description" content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask & Laravel versions. Grab your copy now and get life-time updates for free."/>
         <meta name="keywords" content="metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Blazor, Django, Flask & Laravel starter kits, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon"/>
@@ -21,20 +21,21 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>
         <!--end::Fonts-->
         <!--begin::Global Stylesheets Bundle(used by all pages)-->
-        <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/> <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/> 
+        <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
         <link
         href="assets/style/custom.css" rel="stylesheet" type="text/css"/>
-               <script>
+    <!--end::Global Stylesheets Bundle-->
+        <script>
         localStorage.getItem("user") ?? (window.location.href = "/login.html");
         // document.getElementById("username").innerHTML = localStorage.getItem("user").username;
     </script>
-    <!--end::Global Stylesheets Bundle-->
     </head>
 
     <body id="kt_app_body" data-kt-app-layout="light-sidebar" data-kt-app-header-fixed="true" data-kt-app-toolbar-enabled="true" class="app-default">
         <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
             <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-                <div id="kt_app_header" class="app-header">
+                  <div id="kt_app_header" class="app-header"  style="background-color:white;">
                     <div class="app-container container-fluid d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
 
                         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
@@ -42,8 +43,9 @@
                                 Ruang Tugas
                                 <!-- <img alt="Logo" src="assets/media/logos/default-small.svg" class="h-30px"/> -->
                             </h1>
+                           
                         </div>
-                         <div class="d-flex align-items-center ms-8">
+                            <div class="d-flex align-items-center ms-8">
                             <a href="/dashboard.html" class="text-dark"> Dashboard</a>
                         </div>
                         <div class="d-flex align-items-center justify-content-between flex-lg-grow-1" id="kt_app_header_wrapper">
@@ -51,7 +53,7 @@
                             <div class="app-navbar flex-shrink-0">
                                 <div class="app-navbar-item ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                                     <button class="btn btn-outline btn-outline-success rounded-pill dropdown-toggle1 mt-1 py-2" style="border-color: #01a9a0; color:#01a9a0" type="button" data-bs-toggle="dropdown">
-                                             <span id="username"></span>
+                                    <span id="username"></span>
                                     </button>
                                     <ul class="dropdown-menu">
                                              <li>
@@ -60,9 +62,10 @@
                                             <li>
                                             <a class="dropdown-item" href="/resetpassword.html">Ubah Password</a>
                                         </li>
-                                            <li>
+                                        <li>
                                             <a class="dropdown-item" onclick="logout()" href="/login.html">Logout</a>
                                         </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -75,59 +78,57 @@
                     <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                         <div class="d-flex flex-column flex-column-fluid">
                             <div id="kt_app_content" class="app-content flex-column-fluid pt-8 mt-20 mt-lg-0">
-                                <div id="kt_app_content_container" class="app-container container-fluid d-flex align-items-center flex-column justify-content-center">
-                                    <div class="card card-custom mt-5 w-100 w-lg-50 mb-5">
-                                        <div class="card-header justify-content-center d-flex flex-column align-items-center" style="min-height:150px;border-top: 30px solid #01a9a0;border-radius:24px 24px 0px 0px;">
-                                            <div class="card-title mb-0">
-                                                <h1 id="form-title"></h1>
+                                <div id="kt_app_content_container" class="app-container container-fluid d-flex justify-content-center">
+                                    <div class="card shadow sm w-100 w-lg-25">
+                                        <div class="card-header ">
+                                            <div class="card-title" style="color:#01a9a0">
+                                             Profile
                                             </div>
-                                            <div class="card-title">
-                                                Silahkan kumpulkan tugas disini!😎
-
-                                            </div>
-
+                                          
                                         </div>
-                                    </div>
-
-                                    <div class="card card-custom w-100 w-lg-50">
-                                            <form class="w-100" >
-                                        <div class="card-header justify-content-center d-flex flex-column align-items-center" style="min-height:30px;border-radius:24px 24px 0px 0px;background: #01a9a0;">
-
-                                            <div class="card-title text-white" id="card-description">
-                                            </div>
-                                        </div>
-
-                                        <div class="card-body" style="min-height:150px;">
-                                            <div class="alert alert-success" style="display: none;" id="alerts">
-                                               Respon yang anda kirimkan diterima
-                                            </div>
-                                              <div class="alert alert-danger" style="display: none;" id="alerts1">
-                                                Respon yang anda kirimkan ditolak, silahkan kirim kembali responnya
-                                            </div>
-                                              <div class="alert alert-primary" style="display: none;" id="alerts2">
-                                                 Anda sudah mengirim respon pada form ini, jika ingin mengupdate silahkan kirim kembali responnya
-                                            </div>
-                                             <div class="mb-8 w-100">
-                                            <label for="name" class="form-label fw-bold required">File Tugas</label>
+                                        <div class="card-body">
+                                        <form>
+                                          <div class="fv-row mb-8">
+                                            <label for="email" class="form-label">NIM</label>
                                             <input
-                                                type="file"
-                                                id="file"
-                                                placeholder="Masukkan judul"
-                                                name="file"
-                                                class="form-control"
+                                                type="text"
+                                                id="nim"
+                                                placeholder="Masukkan NIM"
+                                                name="nim"
+                                                class="form-control form-control-solid radius-custom"
+                                                required
+                                            />
+                                        
+                                            </div>
+                                            <div class="fv-row mb-8">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input
+                                                type="email"
+                                                id="email"
+                                                placeholder="Masukkan email"
+                                                name="email"
+                                                class="form-control form-control-solid radius-custom"
                                                 required
                                             />
                                             </div>
-                                        </div>
-                                        <div class="card-footer d-flex justify-content-between" style="background-color: #f5f8fa;">
-                                        <button type="submit" class="btn text-white lh-0" style="background-color: #01a9a0;">
-                                            <div class="pb-0 mb-0">Kirim</div>
-                                        </button>
-                                            <button class="py-3 btn text-primary" type="button" onclick="clearForm()" >clear form</button>
-
-                                        </div>
+                                        
+                                            <div class="d-grid mb-10">
+                                            <button
+                                                type="submit"
+                                                id="kt_sign_in_submit"
+                                                class="btn rounded-pill"
+                                                style="background-color: #01a9a0"
+                                            >
+                                                <span class="indicator-label text-white">Simpan</span>
+                                            </button>
+                                            </div>
                                         </form>
-                                    </div>
+                                    
+                                        </div>
+                                    </div> 
+                                 
+
+                                
                                 </div>
                             </div>
                         </div>
@@ -145,75 +146,39 @@
         </div>
 
 <script script script script src = "https://code.jquery.com/jquery-3.6.0.min.js" > </script>
-       <script>
-          const user = JSON.parse(localStorage.getItem("user"));
+    <script>
+             var user = JSON.parse(localStorage.getItem("user"));
          document.getElementById("username").innerHTML = user?.username ?? "MyAccount";
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        
-        const idValue = urlParams.get('id');
-        console.log(idValue); // Output: "1234"
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: 'http://localhost:3000/api/user/'+user?.id,
+                success: function (result) {
+                $('#nim').val(result.data.nim);
+                $('#email').val(result.data.email);
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    var err = JSON.parse(jqXHR.responseText);
+                }
+            });
+        });
 $(document).ready(function () {
-    $.ajax({
-        method: "GET",
-        url: 'http://localhost:3000/api/form/'+idValue,
-        success: function (result) {
-                $('#form-title').append(result.data[0].name);
-                $('#card-description').append(result.data[0].description);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            var err = JSON.parse(jqXHR.responseText);
-            console.log(err)
-        }
-    });
-});
-
-$(document).ready(function () {
-    $.ajax({
-        method: "GET",
-        url: 'http://localhost:3000/api/check-respon?documentid=' + idValue+'&userid='+user?.id,
-        success: function (result) {
-            if (result.data[0].status === 0) {
-                document.getElementById('alerts2').style.display = 'block'
-            }
-             if (result.data[0].status === 2) {
-                document.getElementById('alerts1').style.display = 'block'
-            }
-             if (result.data[0].status === 1) {
-                document.getElementById('alerts').style.display = 'block'
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            var err = JSON.parse(jqXHR.responseText);
-            console.log(err)
-        }
-    });
-});
-
-
-       </script>
-        <script>
-        $("form").submit(function (event) {
-            event.preventDefault();
-            var formData = new FormData();
-        console.log( $('#file')[0].files[0])
-        formData.append('file', $('#file')[0].files[0]);
-
-
-        // tambahkan data lain ke dalam FormData
-        formData.append('user_id', user?.id);
-        formData.append('document_id', idValue);
+    $("form").submit(function (event) {
+        event.preventDefault();
+        var username = $('#nim').val();
+        var email = $('#email').val();
         $.ajax({
-            method: "POST",
-            url: 'http://localhost:3000/api/respon',
-            data: formData,
-            processData: false,
-         contentType: false,
-            beforeSend: function () {
-                Swal.fire({title: 'Silahkan tunggu'});
-                swal.showLoading();
+            method: "PUT",
+            url: 'http://localhost:3000/api/user',
+            data: {
+                username: username,
+                id:user?.id,
+                email: email
             },
             success: function (result) {
+                console.log(result.data);
+                localStorage.setItem("user", JSON.stringify(result.data));
                 Swal.fire({
                     icon: 'success',
                     confirmButtonColor: '#0084C8',
@@ -226,16 +191,17 @@ $(document).ready(function () {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 });
-                setTimeout(function () {
-                    window.location.href = '/dashboard.html'
-                }, 2000)
+                     setTimeout(function () {
+            window.location.reload()
+        }, 2000)
                 // $('#e-book').val('');
                 // console.log(result.message);
             },
             error: function (jqXHR, textStatus, errorThrown) {
+                var err = JSON.parse(jqXHR.responseText);
                 Swal.fire({
                     icon: 'error',
-                    title: "gagal mengirim respon form",
+                    title: err.message,
                     confirmButtonColor: '#0084C8',
                     confirmButtonText: 'Oke',
                     showClass: {
@@ -245,22 +211,24 @@ $(document).ready(function () {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 });
+            
             }
-        })
-
+        }).done(function (data) {
+            console.log(data);
         });
-        function clearForm(){
-            $('#file').val('')
-        }
 
-function logout() {
-    localStorage.removeItem("user")
-    window.location.href = '/login.html'
-}
+});});
 
+    </script>
+
+        <script>
+            // var hostUrl = "assets/";
+            function logout(){
+                localStorage.removeItem("user")
+                window.location.href='/login.html'
+            }
         </script>
         <script src="/assets/plugins/global/plugins.bundle.js"></script>
         <script src="/assets/js/scripts.bundle.js"></script>
-
     </body>
-</html>
+</html></body></html>

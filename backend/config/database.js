@@ -2,7 +2,7 @@ const mysql = require("mysql");
 
 // untuk konfigurasi koneksi
 const koneksi = mysql.createConnection({
-  host: "127.0.0.1",
+  host: "localhost",
   user: "root",
   password: "root",
   database: "db_tb",

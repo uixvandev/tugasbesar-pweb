@@ -54,8 +54,14 @@
                                     <span id="username"></span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" href="/login.html">Logout</a>
+                                             <li>
+                                            <a class="dropdown-item" href="/profile.html">Profile</a>
+                                        </li>
+                                            <li>
+                                            <a class="dropdown-item" href="/resetpassword.html">Ubah Password</a>
+                                        </li>
+                                       <li>
+                                            <a class="dropdown-item" onclick="logout()" href="/login.html">Logout</a>
                                         </li>
 
                                     </ul>
@@ -145,7 +151,7 @@
             $(document).ready(function () {
                 $.ajax({
                     method: "GET",
-                    url: 'http://localhost:3001/api/form/'+idValue,
+                    url: 'http://localhost:3000/api/form/'+idValue,
                     success: function (result) {
                      $('#name').val(result.data[0].name);
                      $('#description').val(result.data[0].description);
@@ -164,7 +170,7 @@
         var description = $('#description').val();
             $.ajax({
                 method: "PUT",
-                url: 'http://localhost:3001/api/form',
+                url: 'http://localhost:3000/api/form',
                 data: {
                     id:idValue,
                     user_id:user?.id,
@@ -219,11 +225,13 @@
             });
 });
 
-                        var hostUrl = "assets/";
+      function logout(){
+                localStorage.removeItem("user")
+                window.location.href='/login.html'
+            }
         </script>
-        <script src="assets/plugins/global/plugins.bundle.js"></script>
-        <script src="assets/js/scripts.bundle.js"></script>
-        <script src="assets/custom/custom.js"></script>
+        <script src="/assets/plugins/global/plugins.bundle.js"></script>
+        <script src="/assets/js/scripts.bundle.js"></script>
 
     </body>
 </html>

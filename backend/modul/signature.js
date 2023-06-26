@@ -52,7 +52,7 @@ const actionRespon = (req, res) => {
         if (rows.length) {
 
             // jalankan query update
-            koneksi.query(queryUpdate, [{ user_id: data.user_id, document_id: data.document_id, file_name: req.file.originalname }, rows[0].id], (err, rows, field) => {
+            koneksi.query(queryUpdate, [{ user_id: data.user_id, document_id: data.document_id, file_name: req.file.originalname, status:0 }, rows[0].id], (err, rows, field) => {
                 // error handling
                 if (err) {
                     return res.status(500).json({ success: false, message: 'Ada kesalahan', error: err });

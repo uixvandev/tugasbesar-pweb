@@ -16,17 +16,17 @@ const createDocuments = (req, res) => {
 
     // buat variabel penampung data dan query sql
     const data = { ...req.body };
-    const querySql = 'INSERT INTO documents SET ?';
+    const querySql = 'INSERT INTO documents SET ?; SELECT LAST_INSERT_ID() as id;';
 
     // jalankan query
-    koneksi.query(querySql, data, (err, rows1, field) => {
+    koneksi.query(querySql, data, (err, rows, field) => {
         // error handling
         if (err) {
             return res.status(500).json({ success: false, message: 'Gagal Membuat Form!', error: err });
         }
-
+        const id = rows[1][0].id;
         // jika request berhasil
-        res.status(201).json({ success: true, message: 'Berhasil Membuat Form!', data: req.body });
+        res.status(201).json({ success: true, message: 'Berhasil Membuat Form!', data: { ...req.body, id } });
 
     });
 }
@@ -141,7 +141,7 @@ const readChekRespon = (req, res) => {
         }
 
         // jika request berhasil
-        res.status(200).json({ success: true, data: rows.length===0?null:rows });
+        res.status(200).json({ success: true, data: rows.length === 0 ? null : rows });
     });
 }
 
